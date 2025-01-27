@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Add these functions for contact section functionality
 function sendEmail() {
-    window.location.href = "mailto:lanceconcio07@gmail.com";
+    window.location.href = "mailto:lanceconcio7@gmail.com";
 }
 
 function openGoogleMaps() {

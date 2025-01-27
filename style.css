@@ -2641,3 +2641,122 @@ section {
         padding: 3rem 1.5rem;
     }
 }
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .about-details {
+        padding: 2rem 1rem;
+    }
+
+    .about-details .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .back-btn {
+        margin-bottom: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
+    .back-btn i {
+        margin-right: 0.5rem;
+    }
+
+    .background-section,
+    .technical-skills,
+    .education,
+    .interests,
+    .professional-goals {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .background-section h2,
+    .technical-skills h2,
+    .education h2,
+    .interests h2,
+    .professional-goals h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #fff;
+    }
+
+    .background-section p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .skill-box {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 1.2rem;
+    }
+
+    .skill-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        color: #fff;
+    }
+
+    .skill-box ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .skill-box ul li {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .skill-box ul li:before {
+        content: "•";
+        margin-right: 0.5rem;
+        color: #4169E1;
+    }
+}
+
+/* Extra Small Devices */
+@media screen and (max-width: 480px) {
+    .about-details {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .about-details .container {
+        padding: 0.8rem;
+    }
+
+    .background-section,
+    .technical-skills,
+    .education,
+    .interests,
+    .professional-goals {
+        padding: 1.2rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .skill-box {
+        padding: 1rem;
+    }
+}
