@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lance Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-mesh">
+            <div class="mesh mesh-1"></div>
+            <div class="mesh mesh-2"></div>
+            <div class="mesh mesh-3"></div>
+        </div>
+        <div class="accent"></div>
+        <div class="accent"></div>
+        <div class="accent"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise"></div>
+    </div>
+    
+    <header class="header">
+        <nav>
+            <div class="logo">LANCE</div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+ 
+    <div class="main-container">
+        <section id="home" class="hero d-flex align-items-center py-5">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="social-links-vertical">
+                        <a href="https://github.com/lanceconcio07"><i class="fab fa-github"></i></a>
+                        <a href="https://www.facebook.com/concio07"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/kuya_yanz/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <div class="hero-text">
+                        <h1>Lance Lordvin<br>Concio<span class="dot"></span></h1>
+                        <div class="subtitle">
+                            <span class="label">— Introduction</span>
+                            <h2>Frontend developer,<br>UI/UX Designer and Web Manager</h2>
+                        </div>
+                        <p class="description">I specialize in building dynamic websites, creating engaging online experiences, and developing efficient web applications that solve real-world problems. With expertise in front-end and back-end development, I craft responsive and user-friendly websites. As a Social Media Manager, I leverage creativity and strategy to grow online presence and connect brands with their audiences. Additionally, my experience in building web apps ensures seamless, functional, and impactful digital solutions. Explore my work, and let's create something amazing together!</p>
+                        <a href="#about" class="my-story">My story <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="hero-image">
+                        <div class="animated-frame">
+                            <div class="animated-line line-1"></div>
+                            <div class="animated-line line-2"></div>
+                            <div class="corner-decoration corner-tl"></div>
+                            <div class="corner-decoration corner-tr"></div>
+                            <div class="corner-decoration corner-bl"></div>
+                            <div class="corner-decoration corner-br"></div>
+                            <div class="circle circle-1"></div>
+                            <div class="circle circle-2"></div>
+                            <div class="circle circle-3"></div>
+                        </div>
+                        <img src="images/my profile pic.png" alt="Profile Picture">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about py-4">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <div class="skill-bars">
+                            <div class="skill">
+                                <span>HTML</span>
+                                <div class="progress-bar"><div class="progress" style="width: 90%"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>CSS</span>
+                                <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+                            </div>
+                            <div class="skill">
+                                <span>JavaScript</span>
+                                <div class="progress-bar"><div class="progress" style="width: 75%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about-details.html" class="see-more-btn">See More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="slideshow-container">
+                        <div class="slides fade">
+                            <img src="images/tetris.png" alt="Tetris Game Screenshot 1">
+                        </div>
+                        <div class="slides fade">
+                            <img src="images/tetris2.png" alt="Tetris Game Screenshot 2">
+                        </div>
+                        <!-- Navigation arrows -->
+                        <a class="prev">❮</a>
+                        <a class="next">❯</a>
+                        <!-- Dots -->
+                        <div class="dots-container">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Tetris Game</h3>
+                    <p>A classic Tetris game implementation using HTML, CSS, and JavaScript. Features include score tracking, piece rotation, and responsive controls.</p>
+                    <div class="project-buttons">
+                        <a href="tetris/tetris.html" class="project-btn">Play Game</a>
+                        <a href="project-details/tetris-details.html" class="project-btn details-btn">Details</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="slideshow-container">
+                        <div class="slides fade">
+                            <img src="images/tictactoe.png" alt="Tic Tac Toe Game Screenshot 1">
+                        </div>
+                        <div class="slides fade">
+                            <img src="images/tictactoe2.png" alt="Tic Tac Toe Game Screenshot 2">
+                        </div>
+                        <!-- Navigation arrows -->
+                        <a class="prev" onclick="changeSlide(-1, this)">❮</a>
+                        <a class="next" onclick="changeSlide(1, this)">❯</a>
+                        <!-- Dots -->
+                        <div class="dots-container">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                    <h3>Tic Tac Toe Game</h3>
+                    <p>A classic Tic Tac Toe game built with HTML, CSS, and JavaScript. Features include two-player gameplay, turn tracking, and win detection.</p>
+                    <div class="project-buttons">
+                        <a href="tictactoe/tictactoe.html" class="project-btn">Play Game</a>
+                        <a href="project-details/tictactoe-details.html" class="project-btn details-btn">Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Me</h2>
+            <div class="contact-cards">
+                <div class="contact-card email-card" onclick="sendEmail()">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>lanceconcio07@gmail.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+63 970 825 8771</p>
+                </div>
+
+                <div class="contact-card location-card" onclick="openGoogleMaps()">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Santo Angel Central Santa Cruz,<br>Laguna</p>
+                    <a href="#" class="directions-btn">
+                        <i class="fas fa-arrow-right"></i> Directions
+                    </a>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://github.com/lanceconcio07" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/concio07" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/kuya_yanz/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <footer>
+        <script src="script.js"></script>
+    </footer>
+</body>
+</html> 

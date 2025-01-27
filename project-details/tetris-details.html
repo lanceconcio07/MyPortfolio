@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Project Details</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="gradient-mesh">
+            <div class="mesh mesh-1"></div>
+            <div class="mesh mesh-2"></div>
+            <div class="mesh mesh-3"></div>
+        </div>
+        <div class="accent"></div>
+        <div class="accent"></div>
+        <div class="accent"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise"></div>
+    </div>
+    
+    <header class="header">
+        <nav>
+            <div class="logo">LANCE</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="project-details">
+        <div class="container">
+            <a href="../index.html#projects" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+            
+            <h1>Tetris Game</h1>
+            
+            <div class="project-info">
+                <div class="project-image">
+                    <div class="slideshow-container">
+                        <div class="slides fade">
+                            <img src="../images/tetris.png" alt="Tetris Game Screenshot 1">
+                        </div>
+                        <div class="slides fade">
+                            <img src="../images/tetris2.png" alt="Tetris Game Screenshot 2">
+                        </div>
+                        
+                        <!-- Navigation arrows -->
+                        <a class="prev">❮</a>
+                        <a class="next">❯</a>
+                        
+                        <!-- Dots -->
+                        <div class="dots-container">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-description">
+                    <h2>About the Project</h2>
+                    <p>A classic Tetris implementation featuring modern web technologies and responsive design.</p>
+                    
+                    <h2>Technologies Used</h2>
+                    <ul class="tech-stack">
+                        <li><i class="fab fa-html5"></i> HTML5</li>
+                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                    </ul>
+                    
+                    <h2>Key Features</h2>
+                    <ul class="features-list">
+                        <li>Responsive controls for both desktop and mobile</li>
+                        <li>Score tracking system</li>
+                        <li>Piece rotation mechanics</li>
+                        <li>Increasing difficulty levels</li>
+                    </ul>
+                    
+                    <div class="project-links">
+                        <a href="../tetris/tetris.html" class="project-btn">Play Game</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="project-details.js"></script>
+</body>
+</html> 
