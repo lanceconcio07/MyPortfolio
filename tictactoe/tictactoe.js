@@ -1,8 +1,16 @@
+let difficulty = 'easy'; // Default difficulty
+let isComputerThinking = false;
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Hide loader after 2 seconds (you can adjust this time)
+    // Hide loader after 2 seconds
     setTimeout(() => {
         const loader = document.getElementById('loader-wrapper');
         const content = document.querySelector('.container');
+        const board = document.getElementById('board');
+        const gameModes = document.querySelector('.game-modes');
+        const difficultyModes = document.querySelector('.difficulty-modes');
+        const status = document.getElementById('status');
+        const restartBtn = document.getElementById('restart');
         
         loader.style.opacity = '0';
         loader.style.transition = 'opacity 0.5s';
@@ -10,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loader.style.display = 'none';
             content.classList.remove('content-hidden');
+            // Hide everything except game mode selection
+            board.style.display = 'none';
+            status.style.display = 'none';
+            restartBtn.style.display = 'none';
+            difficultyModes.style.display = 'none';
+            gameModes.style.marginTop = '50px';
         }, 500);
     }, 2000);
 });
@@ -21,6 +35,7 @@ const restartButton = document.getElementById('restart');
 let currentPlayer = 'X';
 let gameActive = true;
 let gameState = ['', '', '', '', '', '', '', '', ''];
+let isComputerMode = false;
 
 const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
@@ -28,19 +43,75 @@ const winningCombinations = [
     [0, 4, 8], [2, 4, 6]             // Diagonals
 ];
 
+const multiplayerBtn = document.getElementById('multiplayer-btn');
+const computerBtn = document.getElementById('computer-btn');
+
 cells.forEach((cell, index) => {
     cell.addEventListener('click', () => handleCellClick(cell, index));
 });
 
 restartButton.addEventListener('click', restartGame);
 
-function handleCellClick(cell, index) {
-    if (gameState[index] !== '' || !gameActive) return;
+multiplayerBtn.addEventListener('click', () => {
+    isComputerMode = false;
+    multiplayerBtn.classList.add('active');
+    computerBtn.classList.remove('active');
+    document.querySelector('.difficulty-modes').style.display = 'none';
+    document.getElementById('board').style.display = 'grid';
+    document.getElementById('status').style.display = 'block';
+    document.getElementById('restart').style.display = 'block';
+    document.querySelector('.game-modes').style.marginTop = '20px';
+    restartGame();
+});
 
-    gameState[index] = currentPlayer;
-    cell.textContent = currentPlayer;
+computerBtn.addEventListener('click', () => {
+    isComputerMode = true;
+    computerBtn.classList.add('active');
+    multiplayerBtn.classList.remove('active');
+    // Show difficulty selection instead of board
+    document.querySelector('.difficulty-modes').style.display = 'block';
+    document.getElementById('board').style.display = 'none';
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('restart').style.display = 'none';
+});
+
+// Add difficulty button handlers
+const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+difficultyBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        difficultyBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        difficulty = btn.id.replace('-btn', '');
+        
+        // Show the game board
+        document.getElementById('board').style.display = 'grid';
+        document.getElementById('status').style.display = 'block';
+        document.getElementById('restart').style.display = 'block';
+        restartGame();
+    });
+});
+
+function handleCellClick(cell, index) {
+    if (gameState[index] !== '' || !gameActive || isComputerThinking) return;
+
+    makeMove(index);
     
-    cell.style.color = currentPlayer === 'X' ? '#1a2980' : '#e74c3c';
+    if (isComputerMode && gameActive) {
+        isComputerThinking = true;
+        setTimeout(() => {
+            makeComputerMove();
+            isComputerThinking = false;
+        }, 500);
+    }
+}
+
+function makeMove(index) {
+    gameState[index] = currentPlayer;
+    cells[index].textContent = currentPlayer;
+    cells[index].style.color = currentPlayer === 'X' ? '#1a2980' : '#e74c3c';
     
     if (checkWin()) {
         status.textContent = `${currentPlayer} Wins!`;
@@ -56,6 +127,70 @@ function handleCellClick(cell, index) {
 
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     status.textContent = `${currentPlayer}'s turn`;
+}
+
+function makeComputerMove() {
+    if (!gameActive) return;
+    
+    let computerMove;
+    
+    switch(difficulty) {
+        case 'easy':
+            computerMove = getRandomMove();
+            break;
+        case 'medium':
+            // 50% chance of making the best move
+            computerMove = Math.random() < 0.5 ? getBestMove() : getRandomMove();
+            break;
+        case 'hard':
+            computerMove = getBestMove();
+            break;
+        default:
+            computerMove = getRandomMove();
+    }
+    
+    makeMove(computerMove);
+}
+
+function getRandomMove() {
+    const availableMoves = gameState.reduce((moves, cell, index) => {
+        if (cell === '') moves.push(index);
+        return moves;
+    }, []);
+    
+    return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+}
+
+function getBestMove() {
+    // This is a simple implementation. For a truly unbeatable AI,
+    // you would want to implement the minimax algorithm
+    const availableMoves = gameState.reduce((moves, cell, index) => {
+        if (cell === '') moves.push(index);
+        return moves;
+    }, []);
+    
+    // First check if computer can win
+    for (let move of availableMoves) {
+        gameState[move] = 'O';
+        if (checkWin()) {
+            gameState[move] = '';
+            return move;
+        }
+        gameState[move] = '';
+    }
+    
+    // Then check if player can win and block
+    for (let move of availableMoves) {
+        gameState[move] = 'X';
+        if (checkWin()) {
+            gameState[move] = '';
+            return move;
+        }
+        gameState[move] = '';
+    }
+    
+    // Otherwise make a random move
+    return getRandomMove();
 }
 
 function checkWin() {
