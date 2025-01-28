@@ -211,16 +211,23 @@ function drawWinningLine(combination) {
     const lineDiv = document.createElement('div');
     lineDiv.classList.add('winning-line');
     
+    // Check if it's a row win
     if (Math.floor(combination[0] / 3) === Math.floor(combination[1] / 3)) {
         lineDiv.classList.add('horizontal');
         const row = Math.floor(combination[0] / 3);
-        lineDiv.style.top = `${row * 100 + 65}px`;
+        const cellHeight = cells[0].offsetHeight;
+        const gap = 4; // Adjust this value based on your grid gap
+        lineDiv.style.top = `${(row * cellHeight) + (cellHeight / 2) + (row * gap)}px`;
     } 
+    // Check if it's a column win
     else if (combination[0] % 3 === combination[1] % 3) {
         lineDiv.classList.add('vertical');
         const col = combination[0] % 3;
-        lineDiv.style.left = `${col * 100 + 65}px`;
+        const cellWidth = cells[0].offsetWidth;
+        const gap = 4; // Adjust this value based on your grid gap
+        lineDiv.style.left = `${(col * cellWidth) + (cellWidth / 2) + (col * gap)}px`;
     } 
+    // Diagonal wins
     else if (combination.toString() === [0,4,8].toString()) {
         lineDiv.classList.add('diagonal-1');
     } 
